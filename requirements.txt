@@ -6,3 +6,4 @@ beautifulsoup4
 git+https://github.com/openai/whisper.git
 pydub
 langchain-community
+yt_dlp

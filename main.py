@@ -29,18 +29,18 @@ def ask_ai(service_context, reranker, index):
         "---------------------\n"
         "{context_str}"
         "\n---------------------\n"
-        "Your task is to generate a meeting summary out of given transcript and action items."
-        # "Use complete output length if needed but don't leave response without closing statement or incomplete sentence, a proper context should end with full stop in end"
+        "Your task is to generate short meeting summary given transcript, action items and high priority or risk items if any."
+        "Use complete output length if needed but don't leave response without closing statement or incomplete sentence."
     )
     DEFAULT_MOM_TMPL_PROMPT = PromptTemplate(DEFAULT_MOM_TMPL)
-    response_synthesizer = get_response_synthesizer(response_mode=ResponseMode.SIMPLE_SUMMARIZE, text_qa_template=DEFAULT_MOM_TMPL_PROMPT, service_context=service_context, use_async=True, verbose=True)
+    response_synthesizer = get_response_synthesizer(response_mode=ResponseMode.REFINE, text_qa_template=DEFAULT_MOM_TMPL_PROMPT, service_context=service_context, use_async=True, verbose=True)
     elapsed_time = time.time() - start_time
     logger.info(f"response_synthesizer: {elapsed_time:.2f} seconds")
 
     query= "Summarize meeting and share action items?"
     retrieve_re_start_time = time.time()
     query_bundle = QueryBundle(query)
-    retrieved = index.as_retriever(similarity_top_k=10).retrieve(query_bundle)
+    retrieved = index.as_query_engine(similarity_top_k=10).retrieve(query_bundle)
     retrieved_nodes_rank = reranker.postprocess_nodes(retrieved, query_bundle)
     nodes = retrieved_nodes_rank
     logger.info(f"retrieve re-rank: {time.time() - retrieve_re_start_time:.2f} seconds")

@@ -1,7 +1,6 @@
 from langchain.embeddings import HuggingFaceBgeEmbeddings
 from llama_index import LLMPredictor, PromptHelper, ServiceContext
 from llama_index.indices.postprocessor import SentenceTransformerRerank
-import os
 from langchain_community.llms import OpenAI
 from dotenv import load_dotenv
 load_dotenv()

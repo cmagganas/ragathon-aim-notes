@@ -14,4 +14,4 @@ def send_email_report(subject, body, to_email):
         server.ehlo()
         server.starttls()
         server.login('apikey', SENDGRID_API_KEY)
-        server.sendmail(from_email, [to_email], message.as_string())
+        server.sendmail("meetingminutesai@gmail.com", [to_email], message.as_string())

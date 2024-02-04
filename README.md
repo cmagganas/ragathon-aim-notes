@@ -16,6 +16,7 @@ Ragathon-AIM Notes transforms tedious meeting processes into streamlined, action
    pip install -r requirements.txt
    API_KEY = "your_open_api_key_here"
    python main.py
+   streamlit run meeting_minutes.py
    ```
 2. main.py
     * TODO - Try different embedders / models / prompts

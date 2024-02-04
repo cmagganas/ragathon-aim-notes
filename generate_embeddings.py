@@ -5,7 +5,7 @@ load_dotenv()
 from llama_index import VectorStoreIndex, SimpleDirectoryReader,  StorageContext, load_index_from_storage
 
 def meeting_vector_index(dir_name):
-    PERSIST_DIR = "./storage/"+dir_name
+    PERSIST_DIR = f"./storage/{dir_name}"
     if not os.path.exists(PERSIST_DIR):
         # load the documents and create the index
         documents = SimpleDirectoryReader(dir_name).load_data()

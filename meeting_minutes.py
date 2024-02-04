@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 from generate_embeddings import construct_index, PERSIST_DIR
 from main import ask_ai, create_base_context
+from email_report import send_email_report
 
 def process_uploaded_files(user_dir, uploaded_file):
     print("user_dir :: ",user_dir)
@@ -19,7 +20,7 @@ def process_uploaded_files(user_dir, uploaded_file):
 def main():
     st.subheader("Meeting Minutes: Capturing Collaborative Discussions :notes \n", divider='rainbow')
 
-    uploaded_files = st.file_uploader('Choose document to upload', type=['mp3', 'mp4'])
+    uploaded_files = st.file_uploader('Choose document to upload', type=['mp3', 'mp4','.txt','.docs','.vtt'])
     if uploaded_files:
         with st.spinner("Processing uploaded file..."):
             raw_file_directory_path ="mom"
@@ -55,6 +56,26 @@ def main():
             st.divider()
             st.markdown("**Action Items** :dart:")
             st.markdown(action_items_res, unsafe_allow_html=True)
+
+            summary_email = "Summary :\n"
+            for summary_line in summary_template_res.split('<br>'):
+                print("Inside",summary_line)
+                summary_email += ''.join(summary_line)+ "\n"
+
+            action_email = "Actions :"
+            for action in action_items_res.split('<br>'):
+                print("action", action)
+                action_email += ''.join(action)+"\n"
+
+            print(summary_email)
+            print(action_email)
+
+            to_email= 'ragathon.04feb@gmail.com'
+            subject = "MOM for weekly stand up - 04 Feb 24"
+            print("Sending email..")
+            send_email_report(subject, summary_email +"\n"+action_email , to_email)
+            print("Email Sent..")
+
 
             shutil.rmtree(raw_file_directory_path, ignore_errors=True)
             st.markdown('''<style>

@@ -4,7 +4,9 @@ from llama_index.indices.postprocessor import SentenceTransformerRerank
 import os
 from langchain_community.llms import OpenAI
 ## Add your key here
-os.environ["OPENAI_API_KEY"] ="YOUR KEY HERE"
+os.environ["OPENAI_API_KEY"] ="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"
+os.environ["TOKENIZERS_PARALLELISM"] ="true"
+
 llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0.5)
 
 def create_base_context():

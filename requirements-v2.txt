@@ -1,13 +1,9 @@
-streamlit
-pydub
-sentence_transformers
 beautifulsoup4==4.12.3
 langchain==0.1.5
 langchain_community==0.0.17
-langchain_openai==0.0.5
 langchainhub
+langchain-openai
 llama_index==0.9.43
-openai==1.11.0
 openai_whisper==20231117
 python-dotenv==1.0.1
 yt_dlp==2023.12.30

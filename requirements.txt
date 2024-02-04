@@ -1,3 +1,6 @@
+streamlit
+pydub
+sentence_transformers
 beautifulsoup4==4.12.3
 langchain==0.1.5
 langchain_community==0.0.17

@@ -4,7 +4,7 @@ load_dotenv()
 
 from llama_index import VectorStoreIndex, SimpleDirectoryReader,  StorageContext, load_index_from_storage
 
-os.environ["OPENAI_API_KEY"] = "TOKEN HERE"
+# os.environ["OPENAI_API_KEY"] = "TOKEN HERE"
 PERSIST_DIR = "./storage/mom"
 def construct_index(raw_file_directory_path):
     documents = SimpleDirectoryReader(raw_file_directory_path).load_data()

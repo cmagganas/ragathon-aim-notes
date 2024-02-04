@@ -1,6 +1,6 @@
 import os
-
-os.environ["OPENAI_API_KEY"] = "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"
+from dotenv import load_dotenv
+load_dotenv()
 
 from llama_index import VectorStoreIndex, SimpleDirectoryReader,  StorageContext, load_index_from_storage
 

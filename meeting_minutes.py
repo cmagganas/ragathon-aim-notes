@@ -17,21 +17,7 @@ def process_uploaded_files(user_dir, uploaded_file):
         f.write(uploaded_file.getbuffer())
 
 def main():
-    st.title("Minutes of meeting")
-    st.markdown(
-        "Minutes of meeting summary and action items"
-    )
-
-    # if prompt := st.chat_input("How may I help you?"):
-    #     st.chat_message("user").markdown(prompt)
-    #     st.session_state.messages.append({"role": "user", "content": prompt})
-    #     with st.spinner("Generating Response..."):
-    #         response = f": {ask_ai(st.session_state.service_context, prompt, st.session_state.reranker, index_dir)}"
-    #         response = process_code_blocks(response)
-    #         with st.chat_message("assistant"):
-    #             st.markdown(response, unsafe_allow_html=True)
-    #
-    #     st.session_state.messages.append({"role": "assistant", "content": response})
+    st.subheader("Meeting Minutes: Capturing Collaborative Discussions :notes \n", divider='rainbow')
 
     uploaded_files = st.file_uploader('Choose document to upload', type=['mp3', 'mp4'])
     if uploaded_files:
@@ -64,11 +50,11 @@ def main():
             service_context, re_ranker = create_base_context()
             action_items_res = ask_ai(service_context, re_ranker, storage, action_item_template)
             summary_template_res = ask_ai(service_context, re_ranker, storage, summary_template)
-            st.write("Summary:\n")
+            st.markdown("**Summary** :spiral_note_pad:")
             st.markdown(summary_template_res, unsafe_allow_html=True)
-            st.write("Action Items:\n")
+            st.divider()
+            st.markdown("**Action Items** :dart:")
             st.markdown(action_items_res, unsafe_allow_html=True)
-
 
             shutil.rmtree(raw_file_directory_path, ignore_errors=True)
             st.markdown('''<style>

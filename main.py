@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 from langchain import hub
 
+def build_email_content(summary, action_items):
+    pass
 
 #TODO - Try different embedders / models / prompts
 # Note - set your OPEN API key in context.py line 7
@@ -85,3 +87,4 @@ def ask_ai(service_context, reranker, index, promt_temp):
     response = response.replace('\n', '<br>')
     logger.info(f"Processing time: {elapsed_time:.2f} seconds")
     return response
+

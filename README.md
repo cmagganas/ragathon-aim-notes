@@ -53,3 +53,18 @@ Staff concerns over parking led to proposed priority and visitor parking solutio
 ```
 
 Ragathon-AIM Notes is not just a tool; it's a new paradigm for productive meetings, proving that with the right technology, even the most mundane tasks can be transformed into opportunities for efficiency and innovation.
+
+
+### Future Work Roadmap
+```
+✅ Email Draft Meeting Report
+🔲 Architecture Diagram
+🔲 Recurring Meeting / Progess Tracking
+🔲 Assigning Priority Level
+🔲 Evaluating Action Items Assignment (RAGAS)
+🔲 Integrate with Kanban / Project Tracking tools (ie. Agile team stand up style format = blockers, tasks completed, next todo)
+🔲 User Feedback / Review / Editing Ability
+🔲 Eva thinks *privacy & security* are important, I guess ... add that
+🔲 Image and emoji-fy the report
+🔲 Eva wants to extend the to-do
+```
